@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-body p-5">
+
+                    <h2 class="text-center text-success fw-bold mb-4">
+                        <i class="fa-solid fa-user-pen"></i>
+                        Edit Profile
+                    </h2>
+
+                    <!-- Messages -->
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success alert-dismissible fade show">
+                                {{ message }}
+                                <button class="btn-close"
+                                        data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <form method="POST" enctype="multipart/form-data">
+
+                        {% csrf_token %}
+
+                        
+
+                        <div class="row">
+
+                            <!-- Name -->
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label fw-semibold">
+                                    <i class="fa-solid fa-user text-success"></i>
+                                    Full Name
+                                </label>
+
+                                <input type="text"
+                                       name="first_name"
+                                       value="{{ user.first_name }}"
+                                       class="form-control">
+
+                            </div>
+
+                            <!-- Email -->
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label fw-semibold">
+                                    <i class="fa-solid fa-envelope text-success"></i>
+                                    Email
+                                </label>
+
+                                <input type="email"
+                                       name="email"
+                                       value="{{ user.email }}"
+                                       class="form-control">
+
+                            </div>
+
+                            <!-- Phone -->
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label fw-semibold">
+                                    <i class="fa-solid fa-phone text-success"></i>
+                                    Phone Number
+                                </label>
+
+                                <input type="text"
+                                       name="phone"
+                                       value="{{ profile.phone }}"
+                                       class="form-control">
+
+                            </div>
+
+                            <!-- Username -->
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label fw-semibold">
+                                    <i class="fa-solid fa-at text-success"></i>
+                                    Username
+                                </label>
+
+                                <input type="text"
+                                       value="{{ user.username }}"
+                                       class="form-control"
+                                       readonly>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Address -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label fw-semibold">
+                                <i class="fa-solid fa-location-dot text-success"></i>
+                                Address
+                            </label>
+
+                            <textarea name="address"
+                                      rows="4"
+                                      class="form-control">{{ profile.address }}</textarea>
+
+                        </div>
+
+                        <!-- Buttons -->
+
+                        <div class="d-flex justify-content-between">
+
+                            <a href="{% url 'profile' %}"
+                               class="btn btn-outline-secondary px-4">
+
+                                <i class="fa-solid fa-arrow-left"></i>
+
+                                Back
+
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-success px-5">
+
+                                <i class="fa-solid fa-floppy-disk"></i>
+
+                                Save Changes
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

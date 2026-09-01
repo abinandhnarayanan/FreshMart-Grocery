@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<div class="container mt-4">
+
+    <nav aria-label="breadcrumb">
+
+        <ol class="breadcrumb">
+
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">
+                    Home
+                </a>
+            </li>
+
+            <li class="breadcrumb-item">
+                <a href="{% url 'dashboard' %}">
+                   Dashboard
+                </a>
+            </li>
+
+            <li class="breadcrumb-item active" aria-current="page">
+                 Saved Addresses
+            </li>
+
+        </ol>
+
+    </nav>
+
+</div>
+
+<div class="container py-5">
+
+<div class="d-flex justify-content-between mb-4">
+
+<h2><i class="fa-solid fa-location-dot"></i> Saved Addresses</h2>
+
+<a href="{% url 'add_address' %}"
+   class="btn btn-success">
+
+<i class="fa-solid fa-plus"></i> Add New Address
+
+</a>
+
+</div>
+
+{% if addresses %}
+
+{% for address in addresses %}
+
+<div class="card shadow mb-3">
+
+<div class="card-body">
+
+<h5>{{ address.full_name }}</h5>
+
+<p>{{ address.house }}</p>
+
+<p>{{ address.city }}, {{ address.state }}</p>
+
+<p>{{ address.pincode }}</p>
+
+<p><i class="fa-solid fa-phone"></i> {{ address.phone }}</p>
+
+<a href="{% url 'edit_address' address.id %}"
+   class="btn btn-success btn-sm">
+
+Edit
+
+</a>
+
+<a href="{% url 'delete_address' address.id %}"
+   class="btn btn-danger btn-sm">
+
+Delete
+
+</a>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<div class="alert alert-info">
+
+No addresses added yet.
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

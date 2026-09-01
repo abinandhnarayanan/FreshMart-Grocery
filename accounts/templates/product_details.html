@@ -1,0 +1,320 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+
+        <ol class="breadcrumb">
+
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}"
+                   class="text-success text-decoration-none">
+                    Home
+                </a>
+            </li>
+
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}#products"
+                   class="text-success text-decoration-none">
+                    Products
+                </a>
+            </li>
+
+            <li class="breadcrumb-item active">
+                {{ product.name }}
+            </li>
+
+        </ol>
+
+    </nav>
+
+
+    <!-- Product Details -->
+    <div class="card border-0 shadow">
+
+        <div class="card-body p-4 p-md-5">
+
+            <div class="row g-5 align-items-center">
+
+
+                <!-- Product Image -->
+                <div class="col-md-6 text-center">
+
+                    {% if product.image %}
+
+                    <img src="{{ product.image.url }}"
+                         alt="{{ product.name }}"
+                         class="img-fluid rounded shadow-sm"
+                         style="
+                            width:100%;
+                            max-width:450px;
+                            height:400px;
+                            object-fit:cover;
+                         ">
+
+                    {% else %}
+
+                    <div class="bg-light rounded d-flex
+                                align-items-center justify-content-center"
+                         style="height:400px;">
+
+                        <span class="text-muted">
+                            No Image Available
+                        </span>
+
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- Product Information -->
+                <div class="col-md-6">
+
+                    <!-- Category -->
+
+                    {% if product.category %}
+
+                    <span class="badge bg-success mb-3">
+                        {{ product.category.name }}
+                    </span>
+
+                    {% endif %}
+
+
+                    <!-- Product Name -->
+
+                    <h1 class="fw-bold mb-3">
+                        {{ product.name }}
+                    </h1>
+
+
+                    <!-- Price -->
+
+                    <h2 class="text-success fw-bold mb-3">
+                        ₹{{ product.price }}
+                    </h2>
+
+
+                    <!-- Availability -->
+
+                    {% if product.available and product.stock > 0 %}
+
+                    <span class="badge bg-success mb-3">
+                        ✓ In Stock
+                    </span>
+
+                    {% else %}
+
+                    <span class="badge bg-danger mb-3">
+                        Out of Stock
+                    </span>
+
+                    {% endif %}
+
+
+                    <!-- Description -->
+
+                    <h5 class="fw-bold mt-3">
+                        Product Description
+                    </h5>
+
+                    <p class="text-muted">
+                        {{ product.description }}
+                    </p>
+
+
+                    {% if product.available and product.stock > 0 %}
+
+                    <!-- Stock -->
+
+                    <p class="mb-3">
+
+                        <strong>
+                            Available Stock:
+                        </strong>
+
+                        {{ product.stock }}
+
+                    </p>
+
+
+                    <!-- Quantity -->
+
+                    <div class="mb-4">
+
+                        <label class="form-label fw-bold">
+                            Quantity
+                        </label>
+
+                        <div class="input-group"
+                             style="max-width:180px;">
+
+                            <!-- MINUS BUTTON -->
+
+                            <button type="button"
+                                    class="btn btn-outline-success"
+                                    id="minusBtn"
+                                    onclick="decreaseQuantity()">
+
+                                <i class="fa-solid fa-minus"></i>
+
+                            </button>
+
+
+                            <!-- QUANTITY -->
+
+                            <input type="number"
+                                   id="quantity"
+                                   value="1"
+                                   min="1"
+                                   max="{{ product.stock }}"
+                                   class="form-control text-center fw-bold"
+                                   readonly>
+
+
+                            <!-- PLUS BUTTON -->
+
+                            <button type="button"
+                                    class="btn btn-outline-success"
+                                    id="plusBtn"
+                                    onclick="increaseQuantity()">
+
+                                <i class="fa-solid fa-plus"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+
+                    <div class="d-flex flex-wrap gap-2">
+
+                        <button type="button"
+                                class="btn btn-success btn-lg"
+                                onclick="addProductToCart()">
+
+                            <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+
+                        </button>
+
+
+                        <a href="{% url 'home' %}#products"
+                           class="btn btn-outline-success btn-lg">
+
+                            Continue Shopping
+
+                        </a>
+
+                    </div>
+
+
+                    {% else %}
+
+                    <!-- Out of Stock -->
+
+                    <div class="alert alert-danger mt-3">
+
+                        This product is currently out of stock.
+
+                    </div>
+
+
+                    <a href="{% url 'home' %}#products"
+                       class="btn btn-outline-success">
+
+                        ← Continue Shopping
+
+                    </a>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- QUANTITY JAVASCRIPT -->
+<!-- ================================================= -->
+
+<script>
+
+function increaseQuantity() {
+
+    const quantityInput =
+        document.getElementById("quantity");
+
+    const currentQuantity =
+        parseInt(quantityInput.value);
+
+    const maxQuantity =
+        parseInt(quantityInput.max);
+
+
+    if (currentQuantity < maxQuantity) {
+
+        quantityInput.value =
+            currentQuantity + 1;
+
+    }
+
+}
+
+
+function decreaseQuantity() {
+
+    const quantityInput =
+        document.getElementById("quantity");
+
+    const currentQuantity =
+        parseInt(quantityInput.value);
+
+    const minQuantity = 1;
+
+
+    if (currentQuantity > minQuantity) {
+
+        quantityInput.value =
+            currentQuantity - 1;
+
+    }
+
+}
+
+
+function addProductToCart() {
+
+    const quantityInput =
+        document.getElementById("quantity");
+
+    const quantity =
+        quantityInput.value;
+
+
+    const url =
+        "{% url 'add_to_cart' product.id %}";
+
+
+    window.location.href =
+        url + "?quantity=" + quantity;
+
+}
+
+</script>
+
+
+{% endblock %}

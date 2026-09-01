@@ -1,0 +1,422 @@
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:Arial, Helvetica, sans-serif;
+
+}
+
+body{
+
+background:#f7f7f7;
+
+}
+
+.top-bar{
+
+background:#198754;
+
+color:white;
+
+padding:10px;
+
+font-size:14px;
+
+}
+
+.navbar-brand{
+
+font-size:30px;
+
+}
+
+.nav-link{
+
+font-size:18px;
+
+margin-left:15px;
+
+}
+
+.nav-link:hover{
+
+color:#198754 !important;
+
+}
+
+/* Hero Section */
+
+.hero{
+
+    background-image:url("../images/hero.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    height:90vh;
+
+    position:relative;
+
+}
+
+/* Dark overlay */
+
+.overlay{
+
+    background:rgba(255,255,255,0.60);
+
+    width:100%;
+
+    height:100%;
+
+}
+
+/* Hero Content */
+
+.hero .container{
+
+    height:100%;
+
+}
+
+.hero h5{
+
+    color:#198754;
+
+    font-weight:bold;
+
+    font-size:28px;
+
+}
+
+.hero h1{
+
+    font-size:70px;
+
+    font-weight:800;
+
+    color:#222;
+
+    margin:20px 0;
+
+}
+
+.hero p{
+
+    font-size:22px;
+
+    color:#555;
+
+    margin-bottom:35px;
+
+}
+
+.hero .btn{
+
+    padding:14px 35px;
+
+    border-radius:8px;
+
+    font-size:20px;
+
+}
+/* =========================
+      Categories
+========================= */
+
+.categories{
+
+background:#ffffff;
+
+}
+
+.category-card{
+
+background:white;
+
+border-radius:15px;
+
+overflow:hidden;
+
+text-align:center;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+transition:.4s;
+
+cursor:pointer;
+
+}
+
+.category-card img{
+
+width:100%;
+
+height:220px;
+
+object-fit:cover;
+
+}
+
+.category-card h4{
+
+margin-top:20px;
+
+font-weight:700;
+
+}
+
+.category-card p{
+
+color:gray;
+
+padding-bottom:20px;
+
+}
+
+.category-card:hover{
+
+transform:translateY(-12px);
+
+box-shadow:0 20px 40px rgba(0,0,0,.18);
+
+}
+
+
+
+/* =========================
+      Products
+========================= */
+
+.products{
+
+background:#f8f9fa;
+
+}
+
+.product-card{
+
+background:white;
+
+border-radius:15px;
+
+overflow:hidden;
+
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+transition:.4s;
+
+}
+
+.product-card img{
+
+width:100%;
+
+height:250px;
+
+object-fit:cover;
+
+}
+
+.product-info{
+
+padding:20px;
+
+}
+
+.product-info h4{
+
+font-weight:700;
+
+}
+
+.product-info p{
+
+color:gray;
+
+}
+
+.product-info h5{
+
+color:#198754;
+
+margin:15px 0;
+
+font-weight:bold;
+
+}
+
+.product-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 20px 40px rgba(0,0,0,.18);
+
+}
+
+.product-card button{
+
+padding:12px;
+
+border-radius:10px;
+
+font-weight:bold;
+
+}
+
+/*==========================
+ABOUT
+===========================*/
+
+.about{
+
+background:#fff;
+
+}
+
+.about img{
+
+border-radius:20px;
+
+}
+
+/*==========================
+WHY US
+===========================*/
+
+.why-us i{
+
+transition:.4s;
+
+}
+
+.why-us i:hover{
+
+transform:scale(1.2);
+
+}
+
+/*==========================
+CONTACT
+===========================*/
+
+.contact{
+
+background:#fff;
+
+}
+
+.contact input,
+
+.contact textarea{
+
+padding:12px;
+
+border-radius:10px;
+
+}
+
+/*==========================
+FOOTER
+===========================*/
+
+.footer{
+
+background:#146c43;
+
+color:white;
+
+padding:60px 0 20px;
+
+}
+
+.footer a{
+
+color:white;
+
+text-decoration:none;
+
+}
+
+.footer a:hover{
+
+color:#ffc107;
+
+}
+
+.footer input{
+
+border:none;
+
+}
+
+.footer i{
+
+cursor:pointer;
+
+transition:.4s;
+
+}
+
+.footer i:hover{
+
+color:#ffc107;
+
+transform:translateY(-5px);
+
+}
+
+.footer hr{
+
+border-color:#ffffff55;
+
+}
+
+.footer a {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+/* Product Card */
+.product-card {
+    transition: .3s;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* Card Body */
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body .btn {
+    margin-top: auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 576px) {
+    .product-card img {
+        height: 180px;
+    }
+}

@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow border-0">
+
+        <div class="card-body p-4">
+
+            <!-- ========================= -->
+            <!-- HEADER -->
+            <!-- ========================= -->
+
+            <div class="d-flex justify-content-between
+                        align-items-center flex-wrap">
+
+                <div>
+
+                    <h2 class="fw-bold mb-2">
+                        <i class="fa-solid fa-box"></i> Orders
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        {{ order.created_at|date:"d M Y, h:i A" }}
+                    </p>
+
+                </div>
+
+
+                <!-- STATUS + CANCEL -->
+
+                <div class="mt-3 mt-md-0 text-md-end">
+
+                    {% if order.status == "Pending" %}
+
+                        <span class="badge bg-warning text-dark fs-6">
+                            Pending
+                        </span>
+
+                        <!-- Cancel Order Button -->
+
+                        <form method="POST"
+                              action="{% url 'cancel_order' order.id %}"
+                              class="d-inline ms-2"
+                              onsubmit="return confirm('Are you sure you want to cancel this order?');">
+
+                            {% csrf_token %}
+
+                            <button type="submit"
+                                    class="btn btn-danger btn-sm">
+
+                                <i class="fa-solid fa-xmark"></i>
+                                Cancel Order
+
+                            </button>
+
+                        </form>
+
+
+                    {% elif order.status == "Delivered" %}
+
+                        <span class="badge bg-success fs-6">
+                            Delivered
+                        </span>
+
+
+                    {% elif order.status == "Cancelled" %}
+
+                        <span class="badge bg-danger fs-6">
+                            Cancelled
+                        </span>
+
+
+                    {% else %}
+
+                        <span class="badge bg-secondary fs-6">
+                            {{ order.status }}
+                        </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <hr>
+
+
+            <!-- ========================= -->
+            <!-- PRODUCTS -->
+            <!-- ========================= -->
+
+            <h4 class="mb-4">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Products
+
+            </h4>
+
+
+            {% for item in order.items.all %}
+
+            <div class="card border mb-3">
+
+                <div class="card-body">
+
+                    <div class="row align-items-center">
+
+
+                        <!-- PRODUCT IMAGE -->
+
+                        <div class="col-4 col-md-2 text-center">
+
+                            {% if item.product.image %}
+
+                            <img
+                                src="{{ item.product.image.url }}"
+                                alt="{{ item.product.name }}"
+                                class="img-fluid rounded"
+                                style="
+                                    width:100px;
+                                    height:100px;
+                                    object-fit:cover;
+                                "
+                            >
+
+                            {% else %}
+
+                            <div class="bg-light rounded
+                                        d-flex align-items-center
+                                        justify-content-center"
+                                 style="
+                                    width:100px;
+                                    height:100px;
+                                 ">
+
+                                <span class="text-muted">
+                                    No Image
+                                </span>
+
+                            </div>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- PRODUCT DETAILS -->
+
+                        <div class="col-8 col-md-6">
+
+                            <h5 class="fw-bold">
+
+                                {{ item.product.name }}
+
+                            </h5>
+
+                            <p class="text-muted mb-1">
+
+                                Price:
+                                ₹{{ item.price }}
+
+                            </p>
+
+                            <p class="text-muted mb-0">
+
+                                Quantity:
+                                {{ item.quantity }}
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- PRODUCT TOTAL -->
+
+                        <div class="col-12 col-md-4
+                                    text-md-end
+                                    mt-3 mt-md-0">
+
+                            <strong class="text-success fs-5">
+
+                                ₹{% widthratio item.price 1 item.quantity %}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="alert alert-info">
+
+                No products found for this order.
+
+            </div>
+
+            {% endfor %}
+
+
+            <hr>
+
+
+            <!-- ========================= -->
+            <!-- ADDRESS + TOTAL -->
+            <!-- ========================= -->
+
+            <div class="row">
+
+
+                <!-- DELIVERY ADDRESS -->
+
+                <div class="col-md-6 mb-4">
+
+                    <h5>
+
+                        <i class="fa-solid fa-truck"></i>
+
+                        Delivery Address
+
+                    </h5>
+
+                    <div class="border rounded p-3">
+
+                        <strong>
+                            {{ order.full_name }}
+                        </strong>
+
+                        <br>
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        {{ order.phone }}
+
+                        <br><br>
+
+                        {{ order.address }}
+
+                    </div>
+
+                </div>
+
+
+                <!-- ORDER TOTAL -->
+
+                <div class="col-md-6 mb-4">
+
+                    <h5>
+
+                        <i class="fa-solid fa-sack-dollar"></i>
+
+                        Order Total
+
+                    </h5>
+
+                    <div class="border rounded p-3">
+
+                        <h3 class="text-success mb-0">
+
+                            ₹{{ order.total }}
+
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ========================= -->
+            <!-- BACK BUTTON -->
+            <!-- ========================= -->
+
+            <a href="{% url 'orders' %}"
+               class="btn btn-outline-success">
+
+                ← Back to My Orders
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

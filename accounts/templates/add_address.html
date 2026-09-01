@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!-- Breadcrumb -->
+<div class="container mt-4">
+
+    <nav aria-label="breadcrumb">
+
+        <ol class="breadcrumb">
+
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">
+                    Home
+                </a>
+            </li>
+
+            <li class="breadcrumb-item">
+                <a href="{% url 'addresses' %}">
+                   Saved Address
+                </a>
+            </li>
+
+            <li class="breadcrumb-item active" aria-current="page">
+                Add Addresses
+            </li>
+
+        </ol>
+
+    </nav>
+
+</div>
+
+<div class="container py-5">
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h2>Add Address</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input name="full_name" class="form-control mb-3" placeholder="Full Name">
+
+<input name="phone" class="form-control mb-3" placeholder="Phone Number">
+
+<input name="house" class="form-control mb-3" placeholder="House / Street">
+
+<input name="city" class="form-control mb-3" placeholder="City">
+
+<input name="state" class="form-control mb-3" placeholder="State">
+
+<input name="pincode" class="form-control mb-3" placeholder="Pincode">
+
+<button class="btn btn-success">
+
+Save Address
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

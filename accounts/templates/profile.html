@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<div class="container mt-4">
+
+    <nav aria-label="breadcrumb">
+
+        <ol class="breadcrumb">
+
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">
+                    Home
+                </a>
+            </li>
+
+           
+            <li class="breadcrumb-item active" aria-current="page">
+                   My Profile
+            </li>
+
+        </ol>
+
+    </nav>
+
+</div>
+
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card border-0 shadow-lg rounded-4">
+
+                <div class="card-body p-5">
+
+                    <!-- Profile Header -->
+
+                    <div class="text-center mb-4">
+
+                        
+
+                        <h2 class="fw-bold mt-3">
+                            {{ user.first_name|default:user.username }}
+                        </h2>
+
+                        <p class="text-muted mb-0">
+                            @{{ user.username }}
+                        </p>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-4">
+                            <div class="border rounded-3 p-3 bg-light">
+                                <h6 class="text-success">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    Email
+                                </h6>
+                                <p class="mb-0">
+                                    {{ user.email|default:"Not Added" }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="border rounded-3 p-3 bg-light">
+                                <h6 class="text-success">
+                                    <i class="fa-solid fa-phone"></i>
+                                    Phone
+                                </h6>
+                                <p class="mb-0">
+                                    {{ profile.phone|default:"Not Added" }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="border rounded-3 p-3 bg-light">
+                                <h6 class="text-success">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    Address
+                                </h6>
+                                <p class="mb-0">
+                                    {{ profile.address|default:"Not Added" }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="border rounded-3 p-3 bg-light">
+                                <h6 class="text-success">
+                                    <i class="fa-solid fa-calendar"></i>
+                                    Joined On
+                                </h6>
+                                <p class="mb-0">
+                                    {{ user.date_joined|date:"d M Y" }}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+
+                        <a href="{% url 'edit_profile' %}"
+                           class="btn btn-success btn-lg">
+
+                            <i class="fa-solid fa-user-pen"></i>
+
+                            Edit Profile
+
+                        </a>
+
+                          <a href="{% url 'dashboard' %}"
+                           class="btn btn-outline-success btn-lg">
+
+                            <i class="fa-solid fa-chart-line"></i>
+
+                            My Dashboard
+
+                        </a>
+
+                        
+                        <a href="{% url 'logout' %}"
+                           class="btn btn-outline-danger btn-lg">
+
+                            <i class="fa-solid fa-right-from-bracket"></i>
+
+                            Logout
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

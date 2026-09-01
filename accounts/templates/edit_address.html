@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<div class="container mt-4">
+
+    <nav aria-label="breadcrumb">
+
+        <ol class="breadcrumb">
+
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">
+                    Home
+                </a>
+            </li>
+
+            <li class="breadcrumb-item">
+                <a href="{% url 'addresses' %}">
+                   Saved Address
+                </a>
+            </li>
+
+            <li class="breadcrumb-item active" aria-current="page">
+                Edit Addresses
+            </li>
+
+        </ol>
+
+    </nav>
+
+</div>
+
+<div class="container py-5">
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h2>Edit Address</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input name="full_name" value="{{ address.full_name }}" class="form-control mb-3">
+
+<input name="phone" value="{{ address.phone }}" class="form-control mb-3">
+
+<input name="house" value="{{ address.house }}" class="form-control mb-3">
+
+<input name="city" value="{{ address.city }}" class="form-control mb-3">
+
+<input name="state" value="{{ address.state }}" class="form-control mb-3">
+
+<input name="pincode" value="{{ address.pincode }}" class="form-control mb-3">
+
+<button class="btn btn-success">
+
+Update Address
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

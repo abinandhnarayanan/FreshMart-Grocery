@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h2 class="mb-4">
+       <i class="fa-solid fa-credit-card"></i> Checkout
+    </h2>
+
+    <div class="row">
+
+        <!-- Customer Details -->
+
+        <div class="col-lg-7">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body">
+
+                    <h4 class="mb-4">
+                        <i class="fa-solid fa-box"></i> Delivery Details
+                    </h4>
+
+                    <form method="POST" action="{% url 'place_order' %}">
+
+    {% csrf_token %}
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Full Name
+        </label>
+
+        <input type="text"
+               name="full_name"
+               class="form-control"
+               placeholder="Enter your name"
+               required>
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Phone Number
+        </label>
+
+        <input type="tel"
+               name="phone"
+               class="form-control"
+               placeholder="Enter phone number"
+               required>
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Address
+        </label>
+
+        <textarea name="address"
+                  class="form-control"
+                  rows="4"
+                  placeholder="Enter delivery address"
+                  required></textarea>
+
+    </div>
+
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Payment Method
+        </label>
+
+        <select name="payment_method"
+                class="form-select">
+
+            <option value="Cash on Delivery">
+                Cash on Delivery
+            </option>
+
+            <option value="UPI">
+                UPI
+            </option>
+
+            <option value="Card">
+                Credit / Debit Card
+            </option>
+
+        </select>
+
+    </div>
+
+    <button type="submit"
+            class="btn btn-success btn-lg w-100">
+
+        <i class="fa-regular fa-square-check"></i> Place Order
+
+    </button>
+
+</form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Order Summary -->
+
+        <div class="col-lg-5 mt-4 mt-lg-0">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body">
+
+                    <h4 class="mb-4">
+                        <i class="fa-solid fa-cart-shopping"></i> Your Order
+                    </h4>
+
+
+                    {% for item in products %}
+
+                    <div class="d-flex justify-content-between mb-3">
+
+                        <div>
+
+                            <strong>
+                                {{ item.product.name }}
+                            </strong>
+
+                            <br>
+
+                            <small class="text-muted">
+
+                                {{ item.quantity }} ×
+                                ₹{{ item.product.price }}
+
+                            </small>
+
+                        </div>
+
+
+                        <strong>
+
+                            ₹{{ item.total }}
+
+                        </strong>
+
+                    </div>
+
+                    {% endfor %}
+
+
+                    <hr>
+
+
+                    <div class="d-flex justify-content-between">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <strong>
+                            ₹{{ subtotal }}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="d-flex justify-content-between mt-2">
+
+                        <span>
+                            Delivery
+                        </span>
+
+                        <strong>
+                            ₹{{ delivery_charge }}
+                        </strong>
+
+                    </div>
+
+
+                    <hr>
+
+
+                    <div class="d-flex justify-content-between">
+
+                        <h5>
+                            Grand Total
+                        </h5>
+
+                        <h5 class="text-success">
+
+                            ₹{{ grand_total }}
+
+                        </h5>
+
+                    </div>
+
+
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

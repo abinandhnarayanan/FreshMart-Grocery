@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6 col-lg-5">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body p-4">
+
+                    <h2 class="text-center mb-4">
+                         Register
+                    </h2>
+
+
+                    <!-- Messages -->
+
+                    {% if messages %}
+
+                        {% for message in messages %}
+
+                            <div class="alert alert-danger">
+
+                                {{ message }}
+
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+
+                    <!-- Registration Form -->
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+
+<div class="row">
+
+    <!-- Full Name -->
+
+    <div class="col-md-6 mb-3">
+
+        <label class="form-label">
+            Full Name
+        </label>
+
+        <input type="text"
+               name="fullname"
+               class="form-control"
+               required>
+
+    </div>
+
+
+    <!-- Username -->
+
+    <div class="col-md-6 mb-3">
+
+        <label class="form-label">
+            Username
+        </label>
+
+        <input type="text"
+               name="username"
+               class="form-control"
+               required>
+
+    </div>
+
+
+
+
+                        <!-- Email -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Email
+                            </label>
+
+                            <input type="email"
+                                   name="email"
+                                   class="form-control"   
+                                   required>
+
+                        </div>
+
+
+                        <!-- Phone Number -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Phone Number
+                            </label>
+
+                            <input type="tel"
+                                   name="phonenumber"
+                                   class="form-control"  
+                                   required>
+
+                        </div>
+
+
+                        <!-- Password -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Password
+                            </label>
+
+                            <input type="password"
+                                   name="password"
+                                   class="form-control"
+                                   required>
+
+                        </div>
+
+
+                        <!-- Confirm Password -->
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Confirm Password
+                            </label>
+
+                            <input type="password"
+                                   name="confirm_password"
+                                   class="form-control"                                 
+                                   required>
+
+                        </div>
+                        </div>
+
+
+                        <!-- Register Button -->
+
+                        <button type="submit"
+                                class="btn btn-success w-100">
+
+                            Register
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- Login Link -->
+
+                    <p class="text-center mt-3 mb-0">
+
+                        Already have an account?
+
+                        <a href="{% url 'login' %}"
+                           class="text-success">
+
+                            Login
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

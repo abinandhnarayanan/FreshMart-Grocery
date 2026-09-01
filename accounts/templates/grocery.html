@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<!-- Hero Section -->
+
+<section class="bg-success text-dark py-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Fresh Grocery</h1>
+        <p class="lead">
+            Quality grocery essentials for your everyday needs.
+        </p>
+    </div>
+</section>
+
+<!-- Breadcrumb -->
+
+<div class="container mt-3">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="breadcrumb-item active">
+                Grocery
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<!-- Search & Sort -->
+
+<section class="py-3">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8 mb-3 mb-md-0">
+                <input type="text"
+                       id="searchInput"
+                       class="form-control"
+                       placeholder="Search Grocery Products...">
+            </div>
+
+            <div class="col-md-4">
+                <select id="sortSelect" class="form-select">
+                    <option value="">Sort By</option>
+                    <option value="low">Price Low to High</option>
+                    <option value="high">Price High to Low</option>
+                    <option value="name">A-Z</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Products -->
+
+<section class="pb-5">
+<div class="container">
+
+<div class="row g-4" id="productContainer">
+
+<!-- Basmati Rice -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Basmati Rice" data-price="180">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 49 %}">
+<img src="{% static 'images/rice.jpg' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 49 %}" class="text-decoration-none text-dark">Basmati Rice</a></h5>
+<p class="text-success fw-bold">₹180</p>
+<a href="{% url 'product_details' 49 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Wheat Flour -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Wheat Flour" data-price="65">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 50 %}">
+<img src="{% static 'images/wheatflour.jpg' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 50 %}" class="text-decoration-none text-dark">Wheat Flour</a></h5>
+<p class="text-success fw-bold">₹65</p>
+<a href="{% url 'product_details' 50 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Maida -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Maida" data-price="55">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 51 %}">
+<img src="{% static 'images/maida.jpg' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 51 %}" class="text-decoration-none text-dark">Maida</a></h5>
+<p class="text-success fw-bold">₹55</p>
+<a href="{% url 'product_details' 51 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Sugar -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Sugar" data-price="50">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 52 %}">
+<img src="{% static 'images/sugar.webp' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 52 %}" class="text-decoration-none text-dark">Sugar</a></h5>
+<p class="text-success fw-bold">₹50</p>
+<a href="{% url 'product_details' 52 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Salt -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Salt" data-price="25">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 53 %}">
+<img src="{% static 'images/salt.jpg' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 53 %}" class="text-decoration-none text-dark">Salt</a></h5>
+<p class="text-success fw-bold">₹25</p>
+<a href="{% url 'product_details' 53 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Toor Dal -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Toor Dal" data-price="140">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 54 %}">
+<img src="{% static 'images/toordal.jfif' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 54 %}" class="text-decoration-none text-dark">Toor Dal</a></h5>
+<p class="text-success fw-bold">₹140</p>
+<a href="{% url 'product_details' 54 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Moong Dal -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Moong Dal" data-price="130">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 55 %}">
+<img src="{% static 'images/moongdal.jpg' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 55 %}" class="text-decoration-none text-dark">Moong Dal</a></h5>
+<p class="text-success fw-bold">₹130</p>
+<a href="{% url 'product_details' 55 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Chana Dal -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Chana Dal" data-price="110">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 56 %}">
+<img src="{% static 'images/chanadal.jpg' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 56 %}" class="text-decoration-none text-dark">Chana Dal</a></h5>
+<p class="text-success fw-bold">₹110</p>
+<a href="{% url 'product_details' 56 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Cooking Oil -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Cooking Oil" data-price="150">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 57 %}">
+<img src="{% static 'images/oil.webp' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 57 %}" class="text-decoration-none text-dark">Cooking Oil</a></h5>
+<p class="text-success fw-bold">₹150</p>
+<a href="{% url 'product_details' 57 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Tea -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Tea" data-price="120">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 58 %}">
+<img src="{% static 'images/tea.jpg' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 58 %}" class="text-decoration-none text-dark">Tea</a></h5>
+<p class="text-success fw-bold">₹120</p>
+<a href="{% url 'product_details' 58 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Coffee -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Coffee" data-price="180">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 59 %}">
+<img src="{% static 'images/coffee.jpg' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 59 %}" class="text-decoration-none text-dark">Coffee</a></h5>
+<p class="text-success fw-bold">₹180</p>
+<a href="{% url 'product_details' 59 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Turmeric Powder -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Turmeric Powder" data-price="70">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 60 %}">
+<img src="{% static 'images/turmeric.webp' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 60 %}" class="text-decoration-none text-dark">Turmeric Powder</a></h5>
+<p class="text-success fw-bold">₹70</p>
+<a href="{% url 'product_details' 60 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Chilli Powder -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Chilli Powder" data-price="80">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 61 %}">
+<img src="{% static 'images/chilli.jpg' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 61 %}" class="text-decoration-none text-dark">Chilli Powder</a></h5>
+<p class="text-success fw-bold">₹80</p>
+<a href="{% url 'product_details' 61 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Black Pepper -->
+
+<div class="col-lg-3 col-md-6 product-card" data-name="Black Pepper" data-price="100">
+<div class="card shadow border-0 h-100">
+<a href="{% url 'product_details' 62 %}">
+<img src="{% static 'images/blackpepper.jpg' %}" class="card-img-top">
+</a>
+<div class="card-body">
+<h5><a href="{% url 'product_details' 62 %}" class="text-decoration-none text-dark">Black Pepper</a></h5>
+<p class="text-success fw-bold">₹100</p>
+<a href="{% url 'product_details' 62 %}" class="btn btn-success w-100 mt-auto">View Product</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+{% endblock %}

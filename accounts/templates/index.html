@@ -1,0 +1,721 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="overlay">
+
+        <div class="container h-100">
+
+            <div class="row h-100 align-items-center">
+
+                <div class="col-lg-6">
+
+                    <h5>100% Organic Grocery</h5>
+
+                    <h1>Fresh Food Delivered<br>to Your Door</h1>
+
+                    <p>
+                        Buy fresh vegetables, fruits, milk and groceries
+                        online with the best quality at affordable prices.
+                    </p>
+
+                    <a href="#" class="btn btn-success btn-lg me-3">
+                        Shop Now
+                    </a>
+
+                    <a href="#" class="btn btn-outline-success btn-lg">
+                        Explore
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ===========================
+        Categories
+=========================== -->
+
+<section class="categories py-5">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5 fw-bold">
+            Shop By Categories
+        </h2>
+
+        <div class="row g-4">
+
+            <!-- Fruits -->
+            <div class="col-lg-3 col-md-6">
+                <a href="{% url 'fruits' %}" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="{% static 'images/fruits.jpg' %}" alt="Fruits">
+                        <h4>Fresh Fruits</h4>
+                        <p>Healthy & Organic</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Vegetables -->
+            <div class="col-lg-3 col-md-6">
+                <a href="{% url 'vegetables' %}" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="{% static 'images/vegetables.jpg' %}" alt="Vegetables">
+                        <h4>Vegetables</h4>
+                        <p>Farm Fresh</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Dairy -->
+            <div class="col-lg-3 col-md-6">
+                <a href="{% url 'dairy' %}" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                        <img src="{% static 'images/dairy.jpg' %}" alt="Dairy">
+                        <h4>Dairy</h4>
+                        <p>Milk & Cheese</p>
+                    </div>
+                </a>
+            </div>
+
+           
+           <!-- Grocery -->
+            <div class="col-lg-3 col-md-6">
+                <a href="{% url 'grocery' %}" class="text-decoration-none text-dark">
+                    <div class="category-card">
+                       <img src="{% static 'images/grocery.jpg' %}" alt="Grocery">
+                       <h4>Grocery</h4>
+                       <p>Daily Essentials</p>
+                    </div>
+                </a>
+            </div>
+
+
+
+           
+            
+            
+            
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ===========================
+      Featured Products
+=========================== -->
+
+<section class="products py-5" id="products">
+
+<div class="container">
+
+<h2 class="text-center mb-5 fw-bold">
+
+Featured Products
+
+</h2>
+
+<div class="row g-4">
+
+<!-- Product -->
+
+<div class="col-lg-4 col-md-6">
+
+<div class="product-card">
+
+<img src="{% static 'images/apple.jpg' %}">
+
+<div class="product-info">
+
+<h4>Fresh Apple</h4>
+
+<p>Fresh & Organic</p>
+
+<h5>₹120 / Kg</h5>
+
+
+{% if user.is_authenticated %}
+
+<a href="{% url 'add_to_cart' 1 %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Add To Cart
+</a>
+
+{% else %}
+
+<a href="{% url 'login' %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Login to Buy
+</a>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-lg-4 col-md-6">
+
+<div class="product-card">
+
+<img src="{% static 'images/banana.jpg' %}">
+
+<div class="product-info">
+
+<h4>Banana</h4>
+
+<p>Farm Fresh</p>
+
+<h5>₹60 / Dozen</h5>
+
+{% if user.is_authenticated %}
+
+<a href="{% url 'add_to_cart' 2 %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Add To Cart
+</a>
+
+{% else %}
+
+<a href="{% url 'login' %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Login to Buy
+</a>
+
+{% endif %}
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-lg-4 col-md-6">
+
+<div class="product-card">
+
+<img src="{% static 'images/milk.jpg' %}">
+
+<div class="product-info">
+
+<h4>Fresh Milk</h4>
+
+<p>1 Litre</p>
+
+<h5>₹70</h5>
+
+
+{% if user.is_authenticated %}
+
+<a href="{% url 'add_to_cart' 23 %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Add To Cart
+</a>
+
+{% else %}
+
+<a href="{% url 'login' %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Login to Buy
+</a>
+
+{% endif %}
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-lg-4 col-md-6">
+
+<div class="product-card">
+
+<img src="{% static 'images/maida.jpg' %}">
+
+<div class="product-info">
+
+<h4>Maida</h4>
+
+<p>Perfect for Baking</p>
+
+<h5>₹55</h5>
+
+
+{% if user.is_authenticated %}
+
+<a href="{% url 'add_to_cart' 51 %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Add To Cart
+</a>
+
+{% else %}
+
+<a href="{% url 'login' %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Login to Buy
+</a>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-lg-4 col-md-6">
+
+<div class="product-card">
+
+<img src="{% static 'images/tomato.jpg' %}">
+
+<div class="product-info">
+
+<h4>Tomato</h4>
+
+<p>Fresh & Healthy</p>
+
+<h5>₹40</h5>
+
+
+{% if user.is_authenticated %}
+
+<a href="{% url 'add_to_cart' 9 %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Add To Cart
+</a>
+
+{% else %}
+
+<a href="{% url 'login' %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Login to Buy
+</a>
+
+{% endif %}
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-lg-4 col-md-6">
+
+<div class="product-card">
+
+<img src="{% static 'images/sugar.webp' %}">
+
+<div class="product-info">
+
+<h4>Sugar</h4>
+
+<p>Pure white crystal sugar </p>
+
+<h5>₹50</h5>
+
+
+{% if user.is_authenticated %}
+
+<a href="{% url 'add_to_cart' 52 %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Add To Cart
+</a>
+
+{% else %}
+
+<a href="{% url 'login' %}" class="btn btn-success w-100">
+    <i class="fa-solid fa-cart-shopping"></i>
+    Login to Buy
+</a>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================
+        ABOUT SECTION
+=========================== -->
+
+<section class="about py-5" id="about">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<img src="{% static 'images/about.png' %}" class="img-fluid rounded shadow">
+
+</div>
+
+<div class="col-lg-6">
+
+<h2 class="fw-bold mb-4">
+Our Story
+</h2>
+
+<p class="text-muted">
+
+FreshMart was founded with one simple mission —
+to deliver fresh vegetables, fruits, dairy products,
+bakery items, and daily groceries directly to your
+doorstep.
+
+</p>
+
+<p class="text-muted">
+
+We work directly with trusted farmers and suppliers
+to provide premium quality products at affordable
+prices while ensuring quick delivery and customer
+satisfaction.
+
+</p>
+
+<div class="row mt-4">
+
+<div class="col-6">
+
+<h3 class="text-success">1000+</h3>
+
+<p>Happy Customers</p>
+
+</div>
+
+<div class="col-6">
+
+<h3 class="text-success">500+</h3>
+
+<p>Products</p>
+
+</div>
+
+<div class="col-6">
+
+<h3 class="text-success">50+</h3>
+
+<p>Cities Served</p>
+
+</div>
+
+<div class="col-6">
+
+<h3 class="text-success">10+</h3>
+
+<p>Years Experience</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==========================
+        WHY CHOOSE US
+=========================== -->
+
+<section class="why-us py-5 bg-light">
+
+<div class="container">
+
+<h2 class="text-center fw-bold mb-5">
+
+Why Choose FreshMart
+
+</h2>
+
+<div class="row text-center">
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-truck-fast display-4 text-success"></i>
+
+<h4 class="mt-3">Fast Delivery</h4>
+
+<p>Same day delivery available.</p>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-leaf display-4 text-success"></i>
+
+<h4 class="mt-3">100% Organic</h4>
+
+<p>Fresh farm products.</p>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-credit-card display-4 text-success"></i>
+
+<h4 class="mt-3">Secure Payment</h4>
+
+<p>Safe online transactions.</p>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-headset display-4 text-success"></i>
+
+<h4 class="mt-3">24/7 Support</h4>
+
+<p>Always ready to help.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==========================
+        CONTACT
+=========================== -->
+
+<section class="contact py-5" id="contact">
+
+<div class="container">
+
+<h2 class="text-center fw-bold mb-5">
+
+Contact Us
+
+</h2>
+
+<div class="row">
+
+<div class="col-lg-5">
+
+<h4>Get In Touch</h4>
+
+<p>
+
+<i class="fa-solid fa-location-dot text-success"></i>
+
+Palakkad, Kerala, India
+
+</p>
+
+<p>
+
+<i class="fa-solid fa-phone text-success"></i>
+
++91 9876543210
+
+</p>
+
+<p>
+
+<i class="fa-solid fa-envelope text-success"></i>
+
+info@freshmart.com
+
+</p>
+
+<p>
+
+<i class="fa-solid fa-clock text-success"></i>
+
+Mon - Sun : 8 AM - 9 PM
+
+</p>
+
+</div>
+
+<div class="col-lg-7">
+
+<form>
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+
+<input type="text" class="form-control" placeholder="Your Name">
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<input type="email" class="form-control" placeholder="Email">
+
+</div>
+
+</div>
+
+<input type="text" class="form-control mb-3" placeholder="Subject">
+
+<textarea class="form-control mb-3" rows="5" placeholder="Message"></textarea>
+
+<button class="btn btn-success px-5">
+
+Send Message
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==========================
+            FOOTER
+=========================== -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-lg-4">
+
+<h3>FreshMart</h3>
+
+<p>
+
+FreshMart is your trusted grocery shopping destination.
+
+Fresh • Healthy • Organic
+
+</p>
+
+<div>
+
+<i class="fab fa-facebook fa-2x me-2"></i>
+
+<i class="fab fa-instagram fa-2x me-2"></i>
+
+<i class="fab fa-twitter fa-2x me-2"></i>
+
+<i class="fab fa-youtube fa-2x"></i>
+
+</div>
+
+</div>
+
+<div class="col-lg-2">
+
+<h5>Quick Links</h5>
+
+<ul class="list-unstyled">
+
+<li><a href="#">Home</a></li>
+
+<li><a href="#products">Products</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</div>
+
+<div class="col-lg-3">
+
+<h5>Categories</h5>
+
+<ul class="list-unstyled">
+
+<li>Fruits</li>
+
+<li>Vegetables</li>
+
+<li>Dairy</li>
+
+<li>Bakery</li>
+
+<li>Beverages</li>
+
+</ul>
+
+</div>
+
+<div class="col-lg-3">
+
+<h5>Newsletter</h5>
+
+<input type="email"
+
+class="form-control mb-2"
+
+placeholder="Enter Email">
+
+<button class="btn btn-success w-100">
+
+Subscribe
+
+</button>
+
+</div>
+
+</div>
+
+<hr>
+
+<p class="text-center">
+
+© 2026 FreshMart Grocery Store. All Rights Reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+{% endblock %}

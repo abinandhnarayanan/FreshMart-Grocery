@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<div class="container mt-4">
+
+    <nav aria-label="breadcrumb">
+
+        <ol class="breadcrumb">
+
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">
+                    Home
+                </a>
+            </li>
+
+            <li class="breadcrumb-item">
+                <a href="{% url 'profile' %}">
+                    My Profile
+                </a>
+            </li>
+
+            <li class="breadcrumb-item active" aria-current="page">
+    Dashboard
+</li>
+        </ol>
+
+    </nav>
+
+</div>
+
+<div class="container py-5">
+
+<div class="row">
+
+<!-- Sidebar -->
+
+<div class="col-lg-3">
+
+<div class="list-group shadow">
+
+<a href="{% url 'dashboard' %}" class="list-group-item active">
+<i class="fa-solid fa-house"></i> Dashboard
+</a>
+
+<a href="{% url 'profile' %}" class="list-group-item">
+<i class="fa-solid fa-user"></i> My Profile
+</a>
+
+<a href="{% url 'orders' %}" class="list-group-item">
+<i class="fa-solid fa-box"></i> My Orders
+</a>
+
+<a href="{% url 'addresses' %}" class="list-group-item">
+<i class="fa-solid fa-location-dot"></i> Saved Addresses
+</a>
+
+<a href="{% url 'change_password' %}" class="list-group-item">
+    <i class="fa-solid fa-lock"></i> Change Password
+</a>
+
+<a href="{% url 'logout' %}" class="list-group-item text-danger">
+    <i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+
+</div>
+
+</div>
+
+<!-- Content -->
+
+<div class="row mt-4">
+
+    <div class="col-md-4 mb-3">
+        <div class="card border-0 shadow text-center bg-success text-white">
+            <div class="card-body">
+                <h1>{{ total_orders }}</h1>
+                <h5>Total Orders</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card border-0 shadow text-center bg-warning text-dark">
+            <div class="card-body">
+                <h1>{{ pending_orders }}</h1>
+                <h5>Pending Orders</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card border-0 shadow text-center bg-primary text-white">
+            <div class="card-body">
+                <h1>{{ delivered_orders }}</h1>
+                <h5>Delivered Orders</h5>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+
+{% endblock %}

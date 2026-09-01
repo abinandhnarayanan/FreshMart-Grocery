@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<!-- Hero Section -->
+
+<section class="bg-success text-white py-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Fresh Vegetables</h1>
+        <p class="lead">
+            Fresh farm vegetables delivered directly to your home.
+        </p>
+    </div>
+</section>
+
+<!-- Breadcrumb -->
+
+<div class="container mt-3">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="breadcrumb-item active">
+                Vegetables
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<!-- Search & Sort -->
+
+<section class="py-3">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-8 mb-3 mb-md-0">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="form-control"
+                    placeholder="Search Vegetables..."
+                >
+
+            </div>
+
+            <div class="col-md-4">
+
+                <select id="sortSelect" class="form-select">
+                    <option value="">Sort By</option>
+                    <option value="low">Price Low to High</option>
+                    <option value="high">Price High to Low</option>
+                    <option value="name">A-Z</option>
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Products -->
+
+<section class="pb-5">
+
+<div class="container">
+
+<div class="row g-4" id="productContainer">
+
+<!-- Tomato -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Tomato" data-price="40">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 9 %}">
+<img src="{% static 'images/tomato.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Tomato</h5>
+<p class="text-success fw-bold">₹40 / Kg</p>
+<a href="{% url 'product_details' 9 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Potato -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Potato" data-price="35">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 11 %}">
+<img src="{% static 'images/potato.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Potato</h5>
+<p class="text-success fw-bold">₹35 / Kg</p>
+<a href="{% url 'product_details' 11 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Onion -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Onion" data-price="45">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 12 %}">
+<img src="{% static 'images/onion.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Onion</h5>
+<p class="text-success fw-bold">₹45 / Kg</p>
+<a href="{% url 'product_details' 12 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Carrot -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Carrot" data-price="60">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 13 %}">
+<img src="{% static 'images/carrot.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Carrot</h5>
+<p class="text-success fw-bold">₹60 / Kg</p>
+<a href="{% url 'product_details' 13 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Cabbage -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Cabbage" data-price="50">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 14 %}">
+<img src="{% static 'images/cabbage.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Cabbage</h5>
+<p class="text-success fw-bold">₹50</p>
+<a href="{% url 'product_details' 14 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Cauliflower -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Cauliflower" data-price="55">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 15 %}">
+<img src="{% static 'images/cauliflower.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Cauliflower</h5>
+<p class="text-success fw-bold">₹55</p>
+<a href="{% url 'product_details' 15 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Brinjal -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Brinjal" data-price="48">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 16 %}">
+<img src="{% static 'images/brinjal.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Brinjal</h5>
+<p class="text-success fw-bold">₹48 / Kg</p>
+<a href="{% url 'product_details' 16 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Capsicum -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Capsicum" data-price="90">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 17 %}">
+<img src="{% static 'images/capsicum.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Capsicum</h5>
+<p class="text-success fw-bold">₹90 / Kg</p>
+<a href="{% url 'product_details' 17 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Broccoli -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Broccoli" data-price="120">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 18 %}">
+<img src="{% static 'images/broccoli.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Broccoli</h5>
+<p class="text-success fw-bold">₹120</p>
+<a href="{% url 'product_details' 18 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Spinach -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Spinach" data-price="25">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 19 %}">
+<img src="{% static 'images/spinach.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Spinach</h5>
+<p class="text-success fw-bold">₹25 / Bundle</p>
+<a href="{% url 'product_details' 19 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Cucumber -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Cucumber" data-price="40">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 20 %}">
+<img src="{% static 'images/cucumber.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Cucumber</h5>
+<p class="text-success fw-bold">₹40 / Kg</p>
+<a href="{% url 'product_details' 20 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+<!-- Beetroot -->
+<div class="col-12 col-sm-6 col-lg-3 product-item" data-name="Beetroot" data-price="65">
+<div class="card product-card shadow border-0 h-100">
+<a href="{% url 'product_details' 22 %}">
+<img src="{% static 'images/beetroot.jpg' %}">
+</a>
+<div class="card-body">
+<h5>Beetroot</h5>
+<p class="text-success fw-bold">₹65 / Kg</p>
+<a href="{% url 'product_details' 22 %}" class="btn btn-success w-100">View Product</a>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+{% endblock %}
