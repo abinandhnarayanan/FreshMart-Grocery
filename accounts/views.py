@@ -1,21 +1,20 @@
 from decimal import Decimal
+import random
 
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, redirect, render
-from .models import Product, UserProfile, Address
-from django.contrib.auth.decorators import login_required
-from .models import Address
-from django.contrib.auth import update_session_auth_hash
-from .models import UserProfile, Order
-from .models import Product, UserProfile, Address, Order
-from django.contrib.auth.decorators import login_required
-from .models import Order
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Product, Order, OrderItem
-import random
+
+from .models import (
+    Product,
+    Category,
+    UserProfile,
+    Address,
+    Order,
+    OrderItem,
+)
 
 def index(request):
     return render(request, "index.html")
@@ -39,8 +38,7 @@ def dairy(request):
     })
 
 
-
-    from .models import Product, Category
+    
 
 def grocery(request):
     products = Product.objects.filter(category__name="Grocery", available=True)
