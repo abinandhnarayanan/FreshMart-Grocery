@@ -22,16 +22,29 @@ def index(request):
 
 
 def fruits(request):
-    return render(request, "fruits.html")
+    products = Product.objects.filter(
+        category__name="Fruits",
+        available=True
+    )
+    return render(request, "fruits.html", {"products": products})
 
 
 def vegetables(request):
-    return render(request, "vegetables.html")
-
+    products = Product.objects.filter(
+        category__name="Vegetables",
+        available=True
+    )
+    return render(request, "vegetables.html", {"products": products})
 
 def dairy(request):
-    return render(request, "dairy.html")
+    products = Product.objects.filter(
+        category__name="Dairy",
+        available=True
+    )
 
+    return render(request, "dairy.html", {
+        "products": products
+    })
 
 
 
