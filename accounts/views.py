@@ -20,8 +20,6 @@ def index(request):
     return render(request, "index.html")
 
 
-def fruits(request):
-    return render(request, "fruits.html")
 
 
 def dairy(request):
