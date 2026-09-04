@@ -730,3 +730,27 @@ def fruits(request):
     return render(request, "fruits.html", {
         "products": products
     })
+
+
+
+def vegetables(request):
+    products = Product.objects.filter(
+        category__name__iexact="Vegetables",
+        available=True
+    )
+
+    search = request.GET.get("search")
+    if search:
+        products = products.filter(name__icontains=search)
+
+    sort = request.GET.get("sort")
+    if sort == "low":
+        products = products.order_by("price")
+    elif sort == "high":
+        products = products.order_by("-price")
+    elif sort == "name":
+        products = products.order_by("name")
+
+    return render(request, "vegetables.html", {
+        "products": products
+    })
