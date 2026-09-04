@@ -24,9 +24,6 @@ def fruits(request):
     return render(request, "fruits.html")
 
 
-def vegetables(request):
-    return render(request, "vegetables.html")
-
 def dairy(request):
     products = Product.objects.filter(
         category__name="Dairy",
