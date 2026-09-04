@@ -121,53 +121,6 @@
     </div>
 </section>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const searchInput = document.getElementById("searchInput");
-    const sortSelect = document.getElementById("sortSelect");
-    const container = document.getElementById("productContainer");
-
-    function filterProducts() {
-        const searchValue = searchInput.value.toLowerCase();
-        const cards = container.querySelectorAll(".product-card");
-
-        cards.forEach(card => {
-            const name = card.dataset.name.toLowerCase();
-
-            if (name.includes(searchValue)) {
-                card.style.display = "";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    }
-
-    function sortProducts() {
-        const cards = Array.from(container.querySelectorAll(".product-card"));
-        const value = sortSelect.value;
-
-        cards.sort((a, b) => {
-            const priceA = parseFloat(a.dataset.price);
-            const priceB = parseFloat(b.dataset.price);
-            const nameA = a.dataset.name.toLowerCase();
-            const nameB = b.dataset.name.toLowerCase();
-
-            if (value === "low") return priceA - priceB;
-            if (value === "high") return priceB - priceA;
-            if (value === "name") return nameA.localeCompare(nameB);
-
-            return 0;
-        });
-
-        cards.forEach(card => container.appendChild(card));
-    }
-
-    searchInput.addEventListener("keyup", filterProducts);
-    sortSelect.addEventListener("change", sortProducts);
-
-});
-</script>
 
 {% endblock %}
 
