@@ -20,21 +20,6 @@ def index(request):
     return render(request, "index.html")
 
 
-
-
-
-
-
-    
-
-def grocery(request):
-    products = Product.objects.filter(category__name="Grocery", available=True)
-
-    return render(request, "grocery.html", {
-        "products": products
-    })
-
-
 # PRODUCT DETAILS
 def product_details(request, id):
 
@@ -756,5 +741,28 @@ def dairy(request):
         products = products.order_by("name")
 
     return render(request, "dairy.html", {
+        "products": products
+    })
+
+
+def grocery(request):
+    products = Product.objects.filter(
+        category__name__iexact="Grocery",
+        available=True
+    )
+
+    search = request.GET.get("search")
+    if search:
+        products = products.filter(name__icontains=search)
+
+    sort = request.GET.get("sort")
+    if sort == "low":
+        products = products.order_by("price")
+    elif sort == "high":
+        products = products.order_by("-price")
+    elif sort == "name":
+        products = products.order_by("name")
+
+    return render(request, "grocery.html", {
         "products": products
     })
