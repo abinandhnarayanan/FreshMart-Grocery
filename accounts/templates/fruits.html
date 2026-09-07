@@ -3,15 +3,13 @@
 
 {% block content %}
 
-
-
-<!-- Hero -->
+<!-- Hero Section -->
 
 <section class="bg-success text-white py-5">
     <div class="container text-center">
         <h1 class="display-4 fw-bold">Fresh Fruits</h1>
         <p class="lead">
-            Fresh, juicy and organic fruits delivered to your doorstep.
+            Fresh seasonal fruits delivered directly to your home.
         </p>
     </div>
 </section>
@@ -65,38 +63,57 @@
     </div>
 </section>
 
+<!-- Dynamic Products -->
 
-<div class="row g-4" id="productContainer">
+<section class="pb-5">
+    <div class="container">
 
-    {% for product in products %}
-    <div class="col-lg-3 col-md-6 product-card">
-        <div class="card shadow border-0 h-100">
+        <div class="row g-4" id="productContainer">
 
-            <a href="{% url 'product_details' product.id %}">
-                <img src="{{ product.image.url }}"
-                     class="card-img-top"
-                     alt="{{ product.name }}"
-                     style="height:220px; object-fit:cover;">
-            </a>
+            {% for product in products %}
+            <div class="col-lg-3 col-md-6 product-card"
+                 data-name="{{ product.name }}"
+                 data-price="{{ product.price }}">
 
-            <div class="card-body d-flex flex-column">
-                <h5>{{ product.name }}</h5>
-                <p class="text-success fw-bold">₹{{ product.price }}</p>
+                <div class="card shadow border-0 h-100">
 
-                <a href="{% url 'product_details' product.id %}"
-                   class="btn btn-success w-100 mt-auto">
-                    View Product
-                </a>
+                    <a href="{% url 'product_details' product.id %}">
+                        <img src="{{ product.image.url }}"
+                             class="card-img-top"
+                             alt="{{ product.name }}"
+                             style="height:220px; object-fit:cover;">
+                    </a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <h5>
+                            <a href="{% url 'product_details' product.id %}"
+                               class="text-decoration-none text-dark">
+                                {{ product.name }}
+                            </a>
+                        </h5>
+
+                        <p class="text-success fw-bold">₹{{ product.price }}</p>
+
+                        <a href="{% url 'product_details' product.id %}"
+                           class="btn btn-success w-100 mt-auto">
+                            View Product
+                        </a>
+
+                    </div>
+
+                </div>
             </div>
 
-        </div>
-    </div>
-    {% empty %}
-    <div class="col-12 text-center">
-        <h4>No fruit products available.</h4>
-    </div>
-    {% endfor %}
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <h4>No fruit products available.</h4>
+            </div>
+            {% endfor %}
 
-</div>
+        </div>
+
+    </div>
+</section>
 
 {% endblock %}
