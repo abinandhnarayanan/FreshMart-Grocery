@@ -739,7 +739,7 @@ def vegetables(request):
 
 def dairy(request):
     products = Product.objects.filter(
-        category__name__iexact="Dairy",
+        category__name__iexact="dairy",
         available=True
     )
 
