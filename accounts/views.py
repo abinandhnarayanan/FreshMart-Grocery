@@ -701,7 +701,7 @@ def cancel_order(request, id):
 
 def fruits(request):
     products = Product.objects.filter(
-        category__name__iexact="Fruits",
+        category__name__iexact="fruits",
         available=True
     )
 
